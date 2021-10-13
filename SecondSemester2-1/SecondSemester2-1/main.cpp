@@ -136,8 +136,7 @@ public:
 	int Get(int num)
 	{
 		array_number = newArray[num];
-		chack_newArray = newArray;
-		if (0 >= chack_newArray || chack_newArray > newArray)
+		if (0 >= check_newArray || check_newArray > 1000)
 		{
 			printf("配列参照外\n");
 		}
@@ -152,7 +151,7 @@ public:
 	}
 private:
 	int* newArray;
-	int* chack_newArray;
+	int check_newArray;
 	int array_number;
 };
 int main()
@@ -178,13 +177,13 @@ int main()
 }
 void Array::Create(int array_size)
 {
+	check_newArray = array_size;
 	newArray = new int[array_size];
 }
 void Array::Set(int size1, int size2)
 {
 	newArray[size1] = size2;
-	chack_newArray = newArray;
-	if (0 >= chack_newArray || chack_newArray > newArray)
+	if (0 >= check_newArray || check_newArray > 1000)
 	{
 		printf("配列参照外\n");
 	}
