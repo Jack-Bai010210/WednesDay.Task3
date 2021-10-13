@@ -129,16 +129,31 @@ class Array
 {
 	// この中を実装
 public:
-	int Get(int num) 
+	Array()
 	{
-		number = newArray[num];
-		return number; 
+		newArray = nullptr;
+	}
+	int Get(int num)
+	{
+		array_number = newArray[num];
+		chack_newArray = newArray;
+		if (0 >= chack_newArray || chack_newArray > newArray)
+		{
+			printf("配列参照外\n");
+		}
+		return array_number;
 	}
 	void Set(int size1, int size2);
 	void Create(int array_size);
+	~Array()
+	{
+		delete[] newArray;
+		newArray = nullptr;
+	}
 private:
 	int* newArray;
-	int number;
+	int* chack_newArray;
+	int array_number;
 };
 int main()
 {
@@ -168,4 +183,9 @@ void Array::Create(int array_size)
 void Array::Set(int size1, int size2)
 {
 	newArray[size1] = size2;
+	chack_newArray = newArray;
+	if (0 >= chack_newArray || chack_newArray > newArray)
+	{
+		printf("配列参照外\n");
+	}
 }
